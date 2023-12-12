@@ -1,16 +1,13 @@
 package es.ieslavereda;
 
-public class Carta {
-    private int num;
-    private String palo;
+import com.diogonunes.jcolor.Attribute;
 
-    public Carta(int num, String palo){
+public class Carta {
+    private Num num;
+    private Palo palo;
+
+    public Carta(Num num, Palo palo){
         this.num = num;
         this.palo = palo;
-    }
-
-    @Override
-    public String toString() {
-        return  num + palo;
     }
 }

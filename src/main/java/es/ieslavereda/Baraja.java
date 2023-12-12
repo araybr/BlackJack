@@ -5,15 +5,15 @@ import java.util.List;
 
 public class Baraja {
     Carta[] baraja;
-    private final String[] palos = {"Oro", "Espadas", "Bastos", "Copas"};
+    private final Palo[] palos = {Palo.SPADE, Palo.HEARTS, Palo.DIAMOND, Palo.CLUB};
 
 
     public Baraja(){
         baraja = new Carta[48];
         int cant = 0;
         for (int i = 0; i < 4 ; i++) {
-            for (int j = 1; j <= 12; j++) {
-                baraja[cant] = new Carta(j, palos[i]);
+            for (Num num: Num.values())  {
+                baraja[cant] = new Carta(num, palos[i]);
                 cant++;
             }
         }
