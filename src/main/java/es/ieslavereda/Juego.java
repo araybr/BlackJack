@@ -62,11 +62,20 @@ public class Juego {
         int maxPuntuacion = maxPuntuacionJugadores();
 
         while(jugadorPC.getPuntuacion()>=0 && jugadorPC.getPuntuacion()<maxPuntuacion){
+            esperar(2000);
             jugadorPC.cartaExt(baraja.repartirEncima());
             System.out.println(jugadorPC.getMano());
             if (jugadorPC.getPuntuacion()<0){
                 System.out.println(colorize("se ha pasado la BANCA", Attribute.MAGENTA_TEXT()));
             }
+        }
+    }
+
+    private void esperar(int tiempoMili){
+        try{
+            Thread.sleep(tiempoMili);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

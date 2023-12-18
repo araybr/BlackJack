@@ -17,33 +17,23 @@ public class Jugador {
     public String getNombre() {
         return nombre;
     }
-    public int getPuntuacion(){
-        Scanner sc = new Scanner(System.in);
-        int puntos = 0;
-        boolean preguntar;
-        for (Carta carta:mano) {
-            if (carta.getNum().getNum()=="A"){
-                do {
-                    preguntar = true;
-                    System.out.println("Elije que valor ponerle al ASS: (1 0 11)");
-                    int eleccion = sc.nextInt();
-                    if (eleccion != 1 && eleccion!= 11){
-                        preguntar = false;
-                        System.out.println("Datos mal puestos");
-                    }else{
-                        puntos+=eleccion;
-                    }
-                }while(!preguntar);
-            }else{
-                puntos += carta.getNum().getValue()[0];
-            }
-        }
-        if (puntos>21){
-            return -1;
-        }else{
-            return puntos;
-        }
+    public int getPuntuacion() {
+        return getPuntuacionRecursiva(0, 0);
     }
+
+    private int getPuntuacionRecursiva(int index, int suma) {
+        if (suma > 21) return -1;
+        if (index >= mano.length) return suma;
+
+        if (mano[index].getNum().getValue().length == 1)
+            return getPuntuacionRecursiva(index + 1, suma + mano[index].getNum().getValue()[0]);
+
+        return Math.max(
+                getPuntuacionRecursiva(index + 1, suma + mano[index].getNum().getValue()[0]),
+                getPuntuacionRecursiva(index + 1, suma + mano[index].getNum().getValue()[1])
+        );
+    }
+
     public String getMano(){
         return  Arrays.toString(mano) + "Puntuación = " + getPuntuacion();
     }

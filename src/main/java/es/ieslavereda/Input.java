@@ -2,7 +2,7 @@ package es.ieslavereda;
 import java.util.Scanner;
 
 public class Input {
-    private static final String YES = "y";
+    private static final String YES = "Y";
     private static final String NO = "N";
 
     public static int getInteger(String message){
@@ -21,7 +21,7 @@ public class Input {
     }
     public static String getOption(String message){
         String option = String.valueOf(getString(message).toUpperCase().charAt(0));
-        while(option.equals(YES) && option.equals(NO)){
+        while(!option.equals(YES) && !option.equals(NO)){
             option = String.valueOf(getString(message).toUpperCase().charAt(0));
         }
         return option;
