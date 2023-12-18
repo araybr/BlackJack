@@ -5,20 +5,19 @@ import java.util.List;
 
 public class Baraja {
     Carta[] baraja;
-    private final Palo[] palos = {Palo.SPADE, Palo.HEARTS, Palo.DIAMOND, Palo.CLUB};
-
 
     public Baraja(){
         baraja = new Carta[48];
         int cant = 0;
-        for (int i = 0; i < 4 ; i++) {
+        for (Palo palo: Palo.values()) {
             for (Num num: Num.values())  {
-                baraja[cant] = new Carta(num, palos[i]);
+                baraja[cant] = new Carta(num, palo);
                 cant++;
             }
         }
+        barajar();
     }
-    public void barajar(){
+    private void barajar(){
        List<Carta> listaCartas = Arrays.asList(baraja);
         Collections.shuffle(listaCartas);
         listaCartas.toArray(baraja);

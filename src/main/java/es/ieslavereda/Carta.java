@@ -10,4 +10,13 @@ public class Carta {
         this.num = num;
         this.palo = palo;
     }
+
+    public Num getNum() {
+        return num;
+    }
+
+    @Override
+    public String toString() {
+        return  num + "" + palo;
+    }
 }
